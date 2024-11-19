@@ -1,0 +1,30 @@
+services:
+  web_service:
+    build: ./web_service
+    ports:
+      - "${FLASK_PORT}:${FLASK_PORT}"
+    volumes:
+      - ./web_service/config:/app/config
+    networks:
+      - naitik_network
+    deploy:
+      replicas: ${REPLICAS}
+      update_config:
+        parallelism: ${PARALLELISM}
+      restart_policy:
+        condition: ${RESTART_CONDITION}
+
+  load_balancer:
+    image: nginx:latest
+    ports:
+      - "${NGINX_PORT}:${NGINX_PORT}"
+    volumes:
+      - ./nginx_lb/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web_service
+    networks:
+      - naitik_network
+
+networks:
+  naitik_network:
+    driver: bridge

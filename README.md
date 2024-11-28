@@ -1,18 +1,37 @@
-- In the webservice directory, created the app.py file which reads the sentence from config.txt and responds with it.
+# Assignment 3: Advanced Containers
 
-- I have used python:3.9-alpine to reduce the size of image.
+This project uses a flask containers in he webservice directory which reads the sentence from config.txt and responds with it.
 
-- Created a simple text file in the webservice directory with a sentence Assignment 2 By Naitik Barot(8795986)
+## Pre reqs
 
-- In the nginx_lb/ directory, create a nginx.conf file to configure the load balancer.
-  nginx.conft
+Ensure that you have the pre reqs installed by checking using the following:
 
-- Created docker-compose.yml file which define the services which is two instances of the web service and one instance of the load balancer.
+```bash
+docker -v
+```
 
-- I have created network name naitik_network in which containers will run.
+```bash
+docker compose -v
+```
 
-- In docker-compose.yml i have used enviorement variables to avoid hardcoding sensitive data in the code or Dockerfiles
+## Configuration
 
-- To initiate the service with a single command: docker-compose up --build
+In the nginx_lb/ directory, create a nginx.conf file to configure the load balancer. nginx.conft
 
-- Link for git hub repo - https://github.com/naitikbarot1609/Assignment3
+### Environment Variables
+
+use `mv .env.example .env` to rename the `.env` file. Then fill out the file with the correct information.
+
+## Running the Project
+
+To initiate the service with a single command:
+
+```bash
+docker-compose up --build
+```
+
+## Bring down the project
+
+```bash
+docker compose down
+```
